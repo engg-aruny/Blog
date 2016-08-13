@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C792C9AB-5B02-4132-BDAD-304903644AF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blog.DataAccess</RootNamespace>
+    <AssemblyName>Blog.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\EntityService.cs" />
+    <Compile Include="Common\Interfaces\IEntityService.cs" />
+    <Compile Include="Common\Interfaces\IService.cs" />
+    <Compile Include="Common\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Common\Interfaces\IRepository.cs" />
+    <Compile Include="Common\Repository.cs" />
+    <Compile Include="Common\UnitOfWork.cs" />
+    <Compile Include="Data\Blogging\Application.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\ApplicationSetting.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\BloggingContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloggingContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\BloggingContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\BloggingContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloggingContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\Comment.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\IPostRepository.cs" />
+    <Compile Include="Data\Blogging\Menu.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\MenuItem.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\Post.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\PostRepository.cs" />
+    <Compile Include="Data\Blogging\Role.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\Tag.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\User.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\UserContact.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\UserPerson.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Blogging\UserRole.cs">
+      <DependentUpon>BloggingContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factories\DataCommandFactory.cs" />
+    <Compile Include="Factories\GenericDataCommand.cs" />
+    <Compile Include="Factories\Interfaces\IDataCommand.cs" />
+    <Compile Include="Factories\SqlDataBaseCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Blogging\IPostService.cs" />
+    <Compile Include="Service\Blogging\PostService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Security\" />
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Data\Blogging\BloggingContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BloggingContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Data\Blogging\BloggingContext.edmx.diagram">
+      <DependentUpon>BloggingContext.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Blogging\BloggingContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BloggingContext.edmx</DependentUpon>
+      <LastGenOutput>BloggingContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Blogging\BloggingContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BloggingContext.edmx</DependentUpon>
+      <LastGenOutput>BloggingContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
