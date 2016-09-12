@@ -1,1 +1,1 @@
-﻿
+﻿var blogController = angular.module("blog.ctrl", []);

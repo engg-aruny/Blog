@@ -1,1 +1,3 @@
-﻿var blogApp = angular.module("blogApp", "blog.Ctrl");
+﻿"use strict";
+
+var blogApp = angular.module("blogApp", ["blog.ctrl", "blog.services", "blog.model"]);

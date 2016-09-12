@@ -1,1 +1,1 @@
-﻿
+﻿var blogModel = angular.module("blog.model", []);

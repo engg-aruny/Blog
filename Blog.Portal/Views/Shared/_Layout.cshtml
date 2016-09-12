@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Blog.Portal</title>
+    <title>@ViewData["Title"]</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -13,17 +13,16 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
-<body>
+<body ng-app="blogApp">
     <!-- header -->
     <div class="banner">
-        <div class="container">
+        <div class="container" ng-controller="layoutController">
             <div class="header">
                 <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" class="img-responsive" alt="" /></a>
+                    <a href="index.html"><img src="images/logo.png" class="img-responsive" alt="" />{{model.layout.headingCaption}}</a>
                 </div>
                 <div class="header-right">
                     <ul>
@@ -46,11 +45,11 @@
             <div class="head-nav">
                 <span class="menu"> </span>
                 <ul class="cl-effect-15">
-                    <li class="active"><a href="@Url.Action("Index","Home")">HOME</a></li>
-                    <li><a href="@Url.Action("About","Home")" data-hover="ABOUT">ABOUT</a></li>
-                    <li><a href="@Url.Action("Index","Home")" data-hover="PHOTOS">PHOTOS</a></li>
-                    <li><a href="404.html" data-hover="ARCHIVES">ARCHIVES</a></li>
-                    <li><a href="@Url.Action("Contact","Home")" data-hover="CONTACT">CONTACT</a></li>
+                    <li ng-class="{'active': model.layout.activeMenuItem===menuItem.name}" ng-repeat="menuItem in model.layout.menuItems">
+                        <a href="#/Home" ng-click="model.layout.setActive(menuItem.name)">
+                            {{menuItem.name}}
+                        </a>
+                    </li>
                     <div class="clearfix"> </div>
                 </ul>
             </div>
@@ -112,7 +111,8 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/angular/angular.min.js"></script>
+        <script src="~/js/blog_app.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"

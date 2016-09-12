@@ -2,22 +2,27 @@
 // More info at https://go.microsoft.com/fwlink/?LinkId=808241
 [
   {
-    "outputFileName": "wwwroot/css/site.min.css",
-    // An array of relative input file paths. Globbing patterns supported
+    "outputFileName": "wwwroot/js/blog_app.js",
     "inputFiles": [
-      "wwwroot/css/site.css"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/js/site.min.js",
-    "inputFiles": [
-      "wwwroot/js/site.js"
+      "wwwroot/js/app/app.module.js",
+      "wwwroot/js/app/app.config.js",
+      //Controller
+      "wwwroot/js/app/controllers/controllers.module.js",
+      "wwwroot/js/app/controllers/home.controller.js",
+      "wwwroot/js/app/controllers/layout.controller.js",
+      //Services
+      "wwwroot/js/app/services/services.module.js",
+      //Models
+      "wwwroot/js/app/models/models.module.js",
+      "wwwroot/js/app/models/home.model.js",
+      "wwwroot/js/app/models/layout.model.js"
     ],
     // Optionally specify minification options
     "minify": {
       "enabled": true,
       "renameLocals": true
     },
+    "includeInProject": true,
     // Optinally generate .map file
     "sourceMap": false
   }
