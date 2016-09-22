@@ -1,7 +1,26 @@
-"use strict";
+'use strict';
 
-var blogApp = angular.module("blogApp", ["blog.ctrl", "blog.services", "blog.model"]);
+var blogApp = angular.module('blogApp', ['blog.ctrl', 'blog.services', 'blog.model', 'ngRoute']);
 
+
+blogApp.config(function ($routeProvider) {
+    $routeProvider
+    .when('/', {
+        templateUrl: '/home/post'
+    })
+    .when('/home', {
+        templateUrl: '/home/post'
+    })
+    .when('/about', {
+        templateUrl: '/home/about'
+    })
+    .when('/contact', {
+        templateUrl: '/home/contact'
+    })
+    .otherwise('/', {
+        templateUrl: 'home/post'
+    })
+});
 var blogController = angular.module("blog.ctrl", []);
 blogController.controller('homeController', homeController);
 
@@ -40,13 +59,12 @@ function layoutController($scope, layoutModel) {
     $scope.model = $scope.model || {};
     $scope.model.layout = layoutModel;
     var vm = $scope.model.layout;
-    vm.headingCaption = 'Welcome to Arun Blog';
 
-    vm.menuItems.push({ name: 'HOME', url: '/index/home/' });
-    vm.menuItems.push({ name: 'ABOUT', url: '/index/home/' });
-    vm.menuItems.push({ name: 'PHOTOS', url: '/index/home/' });
-    vm.menuItems.push({ name: 'ARCHIVES', url: '/index/home/' });
-    vm.menuItems.push({ name: 'CONTACT', url: '/index/home/' });
+    vm.menuItems.push({ name: 'HOME', url: '/#/home/' });
+    vm.menuItems.push({ name: 'ABOUT', url: '/#/about/' });
+    vm.menuItems.push({ name: 'PHOTOS', url: '/#/home/' });
+    vm.menuItems.push({ name: 'ARCHIVES', url: '/#/home/' });
+    vm.menuItems.push({ name: 'CONTACT', url: '/#/contact/' });
 
     vm.activeMenuItem = vm.menuItems[0].name;
 
@@ -56,6 +74,13 @@ function layoutController($scope, layoutModel) {
 };
 
 layoutController.$inject = ['$scope', 'layoutModel'];
+blogController.controller('contactController', contactController);
+
+function contactController($scope) {
+
+}
+
+contactController.$inject = ['$scope'];
 var blogService = angular.module("blog.services", []);
 
 var blogModel = angular.module("blog.model", []);
@@ -72,7 +97,7 @@ blogModel.factory('homeModel', function () {
 });
 blogModel.factory('layoutModel', function () {
     return {
-        headingCaption: 'Welcome to Arun Blog',
+        headingCaption: '',
         menuItems: [],
         activeMenuItem: ''
     };

@@ -10,6 +10,7 @@
       "wwwroot/js/app/controllers/controllers.module.js",
       "wwwroot/js/app/controllers/home.controller.js",
       "wwwroot/js/app/controllers/layout.controller.js",
+      "wwwroot/js/app/controllers/contact.controller.js",
       //Services
       "wwwroot/js/app/services/services.module.js",
       //Models

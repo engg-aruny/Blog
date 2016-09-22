@@ -22,6 +22,13 @@ namespace Blog.Portal.Controllers
             return View();
         }
 
+        [Route("home/post")]
+        public IActionResult Post()
+        {
+            return View();
+        }
+
+        [Route("home/about")]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -29,6 +36,8 @@ namespace Blog.Portal.Controllers
             return View();
         }
 
+
+        [Route("home/contact")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";

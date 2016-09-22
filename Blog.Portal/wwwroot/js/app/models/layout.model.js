@@ -1,6 +1,6 @@
 ﻿blogModel.factory('layoutModel', function () {
     return {
-        headingCaption: 'Welcome to Arun Blog',
+        headingCaption: '',
         menuItems: [],
         activeMenuItem: ''
     };
